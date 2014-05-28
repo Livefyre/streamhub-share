@@ -1,8 +1,8 @@
 'use strict'
 
-var Button = require('streamhub-sdk/ui/hub-button');
+var Button = require('streamhub-ui/button');
 var inherits = require('inherits');
-var ShareCommand = require('streamhub-sdk/ui/share-command');
+var ShareCommand = require('streamhub-share/share-command');
 
 /**
  * 

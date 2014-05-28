@@ -1,11 +1,11 @@
 'use strict'
 
-var $ = require('streamhub-sdk/jquery');
-var Command = require('streamhub-sdk/ui/command');
-var log = require('streamhub-sdk/debug')('streamhub-sdk/ui/share-command');
+var $ = require('jquery');
+var Command = require('streamhub-ui/command');
+// var log = require('streamhub-sdk/debug')('streamhub-share/share-command');
 var inherits = require('inherits');
-var Popover = require('streamhub-sdk/ui/popover');
-var ShareMenu = require('streamhub-sdk/ui/share-menu');
+var Popover = require('streamhub-ui/popover');
+var ShareMenu = require('streamhub-share/share-menu');
 
 var ShareCommand = function(opts) {
     this._opts = opts = opts || {};
@@ -31,7 +31,7 @@ ShareCommand.prototype._defaultFn = function () {
 
     this._content.collection.getPermalink(this._opts, function (err, data) {
         if (err) {
-            log(err);
+            // log(err);
             return
         }
         self._content.permalink = data;
