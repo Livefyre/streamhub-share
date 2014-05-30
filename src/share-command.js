@@ -45,7 +45,9 @@ ShareCommand.prototype._defaultFn = function () {
         });
         share.render();
 
-        var popover = new Popover();
+        var popover = new Popover({
+            maxWidth: 160
+        });
         popover._position = Popover.POSITIONS.BOTTOM;
         popover.events
         popover.render();
@@ -79,7 +81,10 @@ ShareCommand.prototype.setPositionView = function (el) {
 };
 
 ShareCommand.prototype.canExecute = function () {
-    return (Command.prototype.canExecute.call(this) && this._content) ? true : false;
+    if (this._content && this._content.collection) {
+        return Command.prototype.canExecute.call(this);
+    }
+    return false;
 };
 
 module.exports = ShareCommand;
