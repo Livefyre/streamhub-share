@@ -7,7 +7,7 @@
 @import (reference) "@{streamhub-ui}/mixins.less";
 @import "@{livefyre-bootstrap}/fycons.less";
 @import (reference) "@{livefyre-bootstrap}/loader.less";
-@import (reference) "@{livefyre-bootstrap}/popovers.less";
+@import "@{livefyre-bootstrap}/popovers.less";
 
 .hub-btn  button{
     .lf-btn();
@@ -19,6 +19,7 @@
 .hub-content-share {
     display: inline-block;
     button {
+        .lf-btn-link();
         padding-left: 29px;
         background-image: data-uri('icons/share.png');
         background-repeat: no-repeat;
@@ -37,13 +38,17 @@
   font-style: normal;
 }
 
+[class^="fycon-"]:before, [class*=" fycon-"]:before {
+    font-size: 16px;
+    margin-right: 6px;
+}
+
 .lf-share {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: black;
     text-align: center;
     background-color: white;
     border: 0;
-    position: absolute;
     z-index: 1010;
     display: block;
     max-width: 276px;
@@ -57,9 +62,34 @@
     white-space: normal;
 }
 
+.lf-popover {
+    .make-lf-popover-theme(#fff, #fff, #fff, #fff, #fff, #fff);
+    padding: 0;
+}
+
+.lf-popover .lf-popover-arrow {
+    &:extend(.lf-popover  .lf-arrow);
+    border-width: 6px;
+}
+
+.lf-popover.lf-pos-bottom .lf-popover-arrow {
+    &:extend(.lf-popover.bottom .lf-arrow );
+    margin-left: -6px;
+    top: -6px;
+}
+
+.lf-popover.lf-pos-bottom .lf-popover-arrow:after {
+    &:extend(.lf-popover.bottom .lf-arrow:after);
+}
+
+.lf-popover-content {
+    padding: 0;
+}
+
+/*
 .lf-popover .lf-popover-arrow {
     /*width: 0;
-    height: 0;*/
+    height: 0;*//*
     border-bottom: 12px solid white;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
@@ -83,7 +113,7 @@
     margin-left: -11px;
     border-top-width: 0;
 }
-
+*/
 .lf-menu-body {
     width: 160px;
 }
@@ -96,12 +126,12 @@
     cursor: pointer;
     list-style: none;
 }
-
+/*
 .lf-share .icon {
     font-size: 16px;
     margin-right: 6px;
 }
-
+*/
 .lf-share .lf-twitter {
     background-color: #55acee;
     border-radius: 3px 3px 0 0;
@@ -113,16 +143,18 @@
 
 .lf-share .lf-menu-foot {
     color: #65676E;
+    border-radius: 0 0 3px 3px;
 }
 
 .lf-share .lf-share-link {
     text-decoration: none;
     color: inherit;
 }
-
+/*
 .lf-popover.lf-pos-bottom {
     position: absolute;
     z-index: 1010;
     transform-origin: center top;
     margin-top: 10px;
 }
+*/
