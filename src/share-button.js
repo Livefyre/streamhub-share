@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 var Button = require('streamhub-ui/button');
 var inherits = require('inherits');
@@ -12,7 +12,7 @@ var ShareCommand = require('streamhub-share/share-command');
  */
 var ShareButton = function (opts) {
     opts = opts || {};
-    opts.className = opts.className || 'btn-link content-share';
+    opts.className = opts.className || 'content-share';
     opts.label = opts.label || 'Share';
 
     var cmd = opts.command;
@@ -24,6 +24,14 @@ var ShareButton = function (opts) {
     cmd.setPositionView(this);
 }
 inherits(ShareButton, Button);
+
+ShareButton.prototype.elClassPrefix = 'hub';
+
+ShareButton.prototype.elTag = 'button';
+
+ShareButton.prototype.template = function () {
+    return '<button>' + this._label + '</button>';
+};
 
 ShareButton.prototype.setContent = function (content) {
     this._command.setContent && this._command.setContent(content);

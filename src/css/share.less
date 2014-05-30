@@ -1,0 +1,128 @@
+@streamhub-ui: "../../lib/streamhub-ui/src/css";
+@livefyre-bootstrap: "../../lib/livefyre-bootstrap/src/styles";
+@icon-font-path: "fonts/";
+@fycon-font-name: "fycons";
+
+@import (reference) "@{streamhub-ui}/buttons.less";
+@import (reference) "@{streamhub-ui}/mixins.less";
+@import "@{livefyre-bootstrap}/fycons.less";
+@import (reference) "@{livefyre-bootstrap}/loader.less";
+@import (reference) "@{livefyre-bootstrap}/popovers.less";
+
+.hub-btn  button{
+    .lf-btn();
+    &:active {
+        .box-shadow(none);
+    }
+}
+
+.hub-content-share {
+    display: inline-block;
+    button {
+        padding-left: 29px;
+        background-image: data-uri('icons/share.png');
+        background-repeat: no-repeat;
+        background-position: 7px center;
+    }
+}
+
+@font-face {
+  font-family: "fycons";
+  src:url("../fonts/fycons.eot");
+  src:url("../fonts/fycons.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/fycons.woff") format("woff"),
+    url("../fonts/fycons.ttf") format("truetype"),
+    url("../fonts/fycons.svg#fycons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.lf-share {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: black;
+    text-align: center;
+    background-color: white;
+    border: 0;
+    position: absolute;
+    z-index: 1010;
+    display: block;
+    max-width: 276px;
+    background-clip: padding-box;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.4);
+    -ms-box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.4);
+    -o-box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.4);
+    white-space: normal;
+}
+
+.lf-popover .lf-popover-arrow {
+    /*width: 0;
+    height: 0;*/
+    border-bottom: 12px solid white;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+}
+.lf-popover .lf-popover-arrow {
+    position: absolute;
+    left: 50%;
+    margin-left: 80px;
+    top: -30px;
+    background: transparent;
+    -webkit-box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.4);
+    -ms-box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.4);
+    -o-box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.4);
+}
+
+.lf-popover .lf-popover-arrow:after {
+    content: " ";
+    top: 1px;
+    margin-left: -11px;
+    border-top-width: 0;
+}
+
+.lf-menu-body {
+    width: 160px;
+}
+
+.lf-share .lf-twitter, .lf-share .lf-facebook, .lf-share .lf-menu-foot {
+    height: 36px;
+    font-size: 14px;
+    color: #fff;
+    line-height: 36px;
+    cursor: pointer;
+    list-style: none;
+}
+
+.lf-share .icon {
+    font-size: 16px;
+    margin-right: 6px;
+}
+
+.lf-share .lf-twitter {
+    background-color: #55acee;
+    border-radius: 3px 3px 0 0;
+}
+
+.lf-share .lf-facebook {
+    background-color: #385185;
+}
+
+.lf-share .lf-menu-foot {
+    color: #65676E;
+}
+
+.lf-share .lf-share-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.lf-popover.lf-pos-bottom {
+    position: absolute;
+    z-index: 1010;
+    transform-origin: center top;
+    margin-top: 10px;
+}
