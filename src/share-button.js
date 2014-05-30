@@ -25,7 +25,7 @@ var ShareButton = function (opts) {
 }
 inherits(ShareButton, Button);
 
-ShareButton.prototype.elClassPrefix = 'hub';
+ShareButton.prototype.elClassPrefix = 'lf';
 
 ShareButton.prototype.elTag = 'button';
 

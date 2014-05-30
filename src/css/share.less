@@ -9,21 +9,31 @@
 @import (reference) "@{livefyre-bootstrap}/loader.less";
 @import "@{livefyre-bootstrap}/popovers.less";
 
-.hub-btn  button{
+.lf-btn  button{
     .lf-btn();
     &:active {
         .box-shadow(none);
     }
 }
 
-.hub-content-share {
+.lf-content-share {
     display: inline-block;
-    button {
+    > button {
         .lf-btn-link();
-        padding-left: 29px;
+        padding-left: 29px !important;
         background-image: data-uri('icons/share.png');
         background-repeat: no-repeat;
         background-position: 7px center;
+    }
+    > button:active {
+        background-image: data-uri('icons/share.png');
+    }
+    &.disabled {
+        display: none;
+        button {
+            background-color: #f5f5f5;
+            border-color: #d5d6d9
+        }
     }
 }
 
