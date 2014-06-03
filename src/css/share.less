@@ -20,7 +20,9 @@
     display: inline-block;
     > button {
         .lf-btn-link();
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         padding-left: 29px !important;
+        padding-right: 6px !important;
         background-image: data-uri('icons/share.png');
         background-repeat: no-repeat;
         background-position: 7px center;
@@ -30,10 +32,10 @@
     }
     &.disabled {
         display: none;
-        button {
-            background-color: #f5f5f5;
-            border-color: #d5d6d9
-        }
+        
+    }
+    > button.disabled {
+        &:extend(.lf-content-share.disabled);
     }
 }
 
@@ -51,25 +53,6 @@
 [class^="fycon-"]:before, [class*=" fycon-"]:before {
     font-size: 16px;
     margin-right: 6px;
-}
-
-.lf-share {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: black;
-    text-align: center;
-    background-color: white;
-    border: 0;
-    z-index: 1010;
-    display: block;
-    max-width: 276px;
-    background-clip: padding-box;
-    border-radius: 3px;
-    -webkit-box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.4);
-    -ms-box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.4);
-    -o-box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.4);
-    box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.4);
-    white-space: normal;
 }
 
 .lf-popover {
