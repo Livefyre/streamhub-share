@@ -26,6 +26,7 @@
         background-image: data-uri('icons/share.png');
         background-repeat: no-repeat;
         background-position: 7px center;
+        background-color: #f5f5f5;
     }
     > button:active {
         background-image: data-uri('icons/share.png');
@@ -58,6 +59,7 @@
 .lf-popover {
     .make-lf-popover-theme(#fff, #fff, #fff, #fff, #fff, #fff);
     padding: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .lf-popover .lf-popover-arrow {
@@ -79,39 +81,11 @@
     padding: 0;
 }
 
-/*
-.lf-popover .lf-popover-arrow {
-    /*width: 0;
-    height: 0;*//*
-    border-bottom: 12px solid white;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-}
-.lf-popover .lf-popover-arrow {
-    position: absolute;
-    left: 50%;
-    margin-left: 80px;
-    top: -30px;
-    background: transparent;
-    -webkit-box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.4);
-    -ms-box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.4);
-    -o-box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.4);
-    box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.4);
-}
-
-.lf-popover .lf-popover-arrow:after {
-    content: " ";
-    top: 1px;
-    margin-left: -11px;
-    border-top-width: 0;
-}
-*/
 .lf-menu-body {
     width: 160px;
 }
 
-.lf-share .lf-twitter, .lf-share .lf-facebook, .lf-share .lf-menu-foot {
+.lf-share-item() {
     height: 36px;
     font-size: 14px;
     color: #fff;
@@ -119,22 +93,24 @@
     cursor: pointer;
     list-style: none;
 }
-/*
-.lf-share .icon {
-    font-size: 16px;
-    margin-right: 6px;
+
+.lf-share-item {
+    .lf-share-item();
 }
-*/
+
 .lf-share .lf-twitter {
+    &:extend(.lf-share-item);
     background-color: #55acee;
     border-radius: 3px 3px 0 0;
 }
 
 .lf-share .lf-facebook {
+    &:extend(.lf-share-item);
     background-color: #385185;
 }
 
 .lf-share .lf-menu-foot {
+    &:extend(.lf-share-item);
     color: #65676E;
     border-radius: 0 0 3px 3px;
 }
@@ -143,11 +119,3 @@
     text-decoration: none;
     color: inherit;
 }
-/*
-.lf-popover.lf-pos-bottom {
-    position: absolute;
-    z-index: 1010;
-    transform-origin: center top;
-    margin-top: 10px;
-}
-*/
