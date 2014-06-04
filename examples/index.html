@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="../src/css/share.css">
+        <style>
+        html, body {
+            background-color: lightGrey;
+        }
+        #view {
+            /*width:300px;*/
+        }
+        </style>
+    </head>
+    <body>
+        <div id="view"></div>
+
+        <script src="../lib/cajon/cajon.js" type="text/javascript"></script>
+        <script src="../requirejs.conf.js" type="text/javascript"></script>
+        <script>
+            requirejs({
+                baseUrl: "../"
+            });
+        </script>
+
+        <script>
+        require([
+            'streamhub-share'
+        ],function (ShareButton) {
+            /**
+             * Streamhub-SDK/Content must be set on the default command to execute.
+             * This can be done through the ShareButton...
+             */
+            var pml = 'http://fyre.it/poop',
+                content = {
+                    permalink: pml,
+                    collection: {
+                        getPermalink: function () { return pml; }
+                    }
+                };
+
+            /**
+             * ... either on construction...
+             */
+            var btn = window.btn =  new ShareButton({
+                el: document.getElementById('view'),
+                content: content
+            });
+
+            /**
+             * ... or later, with setContent(). The content also needs to have
+             * a permalink specified or a collection to getPermalink().
+             */
+            btn.setContent(content);
+
+            btn.render();
+        });
+        </script>
+    </body>
+</html>
