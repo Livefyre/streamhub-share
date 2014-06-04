@@ -1,6 +1,6 @@
 {
-  "name": "streamhub-sdk",
-  "description": "Livefyre Streamhub SDK",
+  "name": "streamhub-share",
+  "description": "Livefyre Streamhub Share",
   "author": "Livefyre <support@livefyre.com>",
   "contributors": [
     "Joao Martins <joao@livefyre.com> (http://www.joao.io)"

@@ -53,7 +53,7 @@ ShareMenu.prototype._fetchPermalink = function () {
     var self = this;
     this._model.collection.getPermalink({content: this._model}, function (err, data) {
         if (err) {
-            // log(err);
+            // log('There was an error retrieving the permalink for this content.', err, this._content);
             return
         }
         self._handleFetchSuccess(err, data);

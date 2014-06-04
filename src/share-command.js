@@ -31,7 +31,7 @@ ShareCommand.prototype._defaultFn = function () {
 
     this._content.collection.getPermalink(this._opts, function (err, data) {
         if (err) {
-            // log(err);
+            // log('There was an error retrieving the permalink for this content.', err, this._content);
             return
         }
         self._content.permalink = data;
@@ -60,7 +60,6 @@ ShareCommand.prototype._defaultFn = function () {
         setTimeout($.proxy(function () {
             $('html').one('click', $.proxy(hideShare, self));
         }, self), 100);
-
 
         function hideShare(ev) {
             share.detach();
