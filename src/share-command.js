@@ -2,7 +2,7 @@
 
 var $ = require('jquery');
 var Command = require('streamhub-ui/command');
-// var log = require('streamhub-sdk/debug')('streamhub-share/share-command');
+var log = require('debug')('streamhub-share/share-command');
 var inherits = require('inherits');
 var Popover = require('streamhub-ui/popover');
 var ShareMenu = require('streamhub-share/share-menu');
@@ -31,7 +31,7 @@ ShareCommand.prototype._defaultFn = function () {
 
     this._content.collection.getPermalink(this._opts, function (err, data) {
         if (err) {
-            // log('There was an error retrieving the permalink for this content.', err, this._content);
+            log('There was an error retrieving the permalink for this content.', err, this._content);
             return
         }
         self._content.permalink = data;

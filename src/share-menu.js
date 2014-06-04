@@ -4,7 +4,7 @@ var $ = require('jquery');
 var BaseMenu = require('streamhub-ui/menu/base');
 var inherits = require('inherits');
 var loader = require('livefyre-bootstrap/loader');
-// var log = require('streamhub-sdk/debug')('streamhub-sdk/ui/share-menu');
+var log = require('debug')('streamhub-share/share-menu');
 var Share = require('streamhub-ui/menu/share');
 var SocialUtil = require('streamhub-share/util/share-format');
 
@@ -53,7 +53,7 @@ ShareMenu.prototype._fetchPermalink = function () {
     var self = this;
     this._model.collection.getPermalink({content: this._model}, function (err, data) {
         if (err) {
-            // log('There was an error retrieving the permalink for this content.', err, this._content);
+            log('There was an error retrieving the permalink for this content.', err, this._content);
             return
         }
         self._handleFetchSuccess(err, data);
