@@ -1,88 +1,68 @@
-@streamhub-ui: "../../lib/streamhub-ui/src/css";
-@livefyre-bootstrap: "../../lib/livefyre-bootstrap/src/styles";
-@icon-font-path: "fonts/";
-@fycon-font-name: "fycons";
+@streamhub-ui: "lib/streamhub-ui/src/css";
+@livefyre-bootstrap: "lib/livefyre-bootstrap/src/styles";
 
 @import (reference) "@{streamhub-ui}/buttons.less";
 @import (reference) "@{streamhub-ui}/mixins.less";
-@import "@{livefyre-bootstrap}/fycons.less";
 @import (reference) "@{livefyre-bootstrap}/loader.less";
 @import "@{livefyre-bootstrap}/popovers.less";
 
-.lf-btn  button{
+@import "@{livefyre-bootstrap}/fycons.less";
+@icon-font-path: "http://cdn.livefyre.com/libs/livefyre-bootstrap/v1.1.0/fonts/";
+
+
+.lf-content-share {
     .lf-btn();
+    .lf-btn-link();
+    display: inline-block;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding-left: 29px;
+    padding-right: 6px;
+    background-image: data-uri('icons/share.png');
+    background-repeat: no-repeat;
+    background-position: 7px center;
     &:active {
         .box-shadow(none);
     }
-}
-
-.lf-content-share {
-    display: inline-block;
-    > button {
-        .lf-btn-link();
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        padding-left: 29px !important;
-        padding-right: 6px !important;
-        background-image: data-uri('icons/share.png');
-        background-repeat: no-repeat;
-        background-position: 7px center;
-    }
-    > button:active {
-        background-image: data-uri('icons/share.png');
+    &.disabled {
+        display: none;   
     }
     &.disabled {
-        display: none;
-        
-    }
-    > button.disabled {
         &:extend(.lf-content-share.disabled);
     }
 }
 
-@font-face {
-  font-family: "fycons";
-  src:url("../fonts/fycons.eot");
-  src:url("../fonts/fycons.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/fycons.woff") format("woff"),
-    url("../fonts/fycons.ttf") format("truetype"),
-    url("../fonts/fycons.svg#fycons") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-
-[class^="fycon-"]:before, [class*=" fycon-"]:before {
-    font-size: 16px;
-    margin-right: 6px;
-}
-
-.lf-popover {
+.lf-share-popover {
+    .lf-popover();
     .make-lf-popover-theme(#fff, #fff, #fff, #fff, #fff, #fff);
     padding: 0;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    .lf-popover-arrow {
+        &:extend(.lf-popover  .lf-arrow);
+        border-width: 6px;
+    }
+    .lf-menu-body {
+        width: 160px;
+        *[class^="fycon-"]:before, [class*=" fycon-"]:before {
+            margin-right: 5px;
+        }
+    }
+    .lf-popover-content {
+        padding: 0;
+    }
+
 }
 
-.lf-popover .lf-popover-arrow {
-    &:extend(.lf-popover  .lf-arrow);
-    border-width: 6px;
-}
-
-.lf-popover.lf-pos-bottom .lf-popover-arrow {
+.lf-share-popover.lf-pos-bottom .lf-popover-arrow {
     &:extend(.lf-popover.bottom .lf-arrow );
+    border-bottom-color: white;
     margin-left: -6px;
     top: -6px;
 }
 
-.lf-popover.lf-pos-bottom .lf-popover-arrow:after {
+.lf-share-popover.lf-pos-bottom .lf-popover-arrow:after {
     &:extend(.lf-popover.bottom .lf-arrow:after);
 }
 
-.lf-popover-content {
-    padding: 0;
-}
-
-.lf-menu-body {
-    width: 160px;
-}
 
 .lf-share-item() {
     height: 36px;
