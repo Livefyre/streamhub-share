@@ -44,10 +44,10 @@ ShareCommand.prototype._defaultFn = function () {
             model: self._content
         });
         share.render();
-
         var popover = new Popover({
             maxWidth: 160
         });
+        popover.$el.addClass('lf-share-popover');
         popover._position = Popover.POSITIONS.BOTTOM;
         popover.events
         popover.render();

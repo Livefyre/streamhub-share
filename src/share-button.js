@@ -30,7 +30,7 @@ ShareButton.prototype.elClassPrefix = 'lf';
 ShareButton.prototype.elTag = 'button';
 
 ShareButton.prototype.template = function () {
-    return '<button>' + this._label + '</button>';
+    return this._label;
 };
 
 ShareButton.prototype.setContent = function (content) {
