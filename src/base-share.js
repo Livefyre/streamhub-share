@@ -8,7 +8,7 @@ var BaseMenu = require('streamhub-ui/menu');
 var inherits = require('inherits');
 var loader = require('livefyre-bootstrap/loader');
 var loaderTemplate = require('hgn!streamhub-ui/templates/loader');
-var shareTemplate = require('hgn!streamhub-ui/templates/menu/share');
+var shareTemplate = require('hgn!streamhub-share/templates/share');
 
 /**
  * Flag menu.
@@ -76,7 +76,9 @@ ShareMenu.prototype._handleFetchSuccess = function (err, permalink) {
  * Handle the textarea click. Select the contents of the textarea.
  * @private
  */
-ShareMenu.prototype._handleTextareaClick = function () {
+ShareMenu.prototype._handleTextareaClick = function (e) {
+    e.preventDefault();
+    e.stopPropagation();
     this.$textarea.select();
 };
 
