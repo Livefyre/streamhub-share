@@ -1,35 +1,32 @@
-'use strict'
-
 var $ = require('jquery');
-var BaseMenu = require('streamhub-ui/menu/base');
 var inherits = require('inherits');
 var loader = require('livefyre-bootstrap/loader');
-var log = require('debug')('streamhub-share/share-menu');
-var Share = require('streamhub-ui/menu/share');
+var BaseShare = require('streamhub-share/base-share');
 var SocialUtil = require('streamhub-share/util/share-format');
+var log = require('debug')('streamhub-share/share-menu');
+
+'use strict'
 
 /**
  * Flag menu.
  * @constructor
- * @extends {BaseMenu}
+ * @extends {BaseShare}
  * @param {Object} opts Config options.
  */
 function ShareMenu(opts) {
-    Share.call(this, opts);
+    BaseShare.call(this, opts);
 
     this.topNavEnabled = false;
 }
-inherits(ShareMenu, Share);
-
-ShareMenu.prototype.events = BaseMenu.prototype.events;
+inherits(ShareMenu, BaseShare);
 
 ShareMenu.prototype.render = function () {
-    Share.prototype.render.call(this);
+    BaseShare.prototype.render.call(this);
     loader.decorate($('.lf-loader-container')[0], 162);
 };
 
 ShareMenu.prototype._renderContent = function () {
-    Share.prototype._renderContent.call(this);
+    BaseShare.prototype._renderContent.call(this);
 
     var link = document.createElement('a');
     link.setAttribute('href', this._model.permalink);
