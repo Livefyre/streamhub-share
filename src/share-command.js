@@ -12,6 +12,8 @@ var ShareCommand = function(opts) {
 
     Command.call(this, this._defaultFn, opts);
 
+    this._popoverActive = false;
+
     if (opts.content) {
         this.setContent(opts.content);
     }
@@ -40,6 +42,9 @@ ShareCommand.prototype._defaultFn = function () {
 
 
     function showShare() {
+        if (self._popoverActive) {
+            return;
+        }
         var share = new ShareMenu({
             model: self._content
         });
@@ -61,16 +66,19 @@ ShareCommand.prototype._defaultFn = function () {
         popover.$el.find('.'+Popover.CLASSES.ARROW).css('left', arrowLeftOffset+'px');
 
         //Timeout the listener attachment so that it doesn't pick-up the button click
-        setTimeout($.proxy(function () {
-            $('html').one('click', $.proxy(hideShare, self));
-        }, self), 100);
+        setTimeout(function () {
+            $('body').one('click', $.proxy(hideShare, self));
+        }, 100);
 
         function hideShare(ev) {
             share.detach();
             share.destroy();
             popover.destroy();
             popover = share = null;
+            self._popoverActive = false;
         }
+
+        self._popoverActive = true;
     }
 };
 

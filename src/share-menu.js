@@ -51,8 +51,6 @@ ShareMenu.prototype._fetchPermalink = function () {
  * @param {jQuery.Event} ev
  */
 ShareMenu.prototype.handleOptionClick = function (ev) {
-    // ev.stopPropagation();
-    // this.emit(this.postEvent, this.buildEventData(ev));
     var data = this.buildEventData(ev);
 
     /** From sharer.js and previously, an annotations controller */
