@@ -61,9 +61,12 @@ ShareCommand.prototype._defaultFn = function () {
 
         share.initialize();
         popover.resizeAndReposition(self._positionView.el);
+
         // Position popover arrow
-        var arrowLeftOffset = self._positionView.$el.outerWidth()/2;
-        popover.$el.find('.'+Popover.CLASSES.ARROW).css('left', arrowLeftOffset+'px');
+        var arrowEl = popover.$el.find('.'+Popover.CLASSES.ARROW);
+        var translateX = arrowEl.offset().left - self._positionView.$el.offset().left - (self._positionView.$el.outerWidth()/2) ;
+        var arrowLeft = parseInt(arrowEl.css('left'), 10);
+        arrowEl.css('left', (arrowLeft-translateX)+'px');
 
         //Timeout the listener attachment so that it doesn't pick-up the button click
         setTimeout(function () {
