@@ -5,6 +5,7 @@
 
 /** @const {string} */
 var FACEBOOK_APP_ID = '595267417193679';
+var LIVEFYRE_CDN = '//cdn.livefyre.com';
 
 /** @type {Object} */
 var ShareFormat = {};
@@ -96,8 +97,8 @@ function generateFacebookParams(params) {
     var caption = 'Livefyre on "{title}"';
     var uri = [
         window.location.protocol,
-        params.assetServer,
-        '/facebook-uri.html'
+        params.assetServer || LIVEFYRE_CDN,
+        '/libs/share/facebook-uri.html'
     ].join('');
     caption = encodeURIComponent(caption.replace('{title}', document.title));
     return ['?app_id=', FACEBOOK_APP_ID,
