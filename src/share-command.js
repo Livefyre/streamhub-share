@@ -45,7 +45,8 @@ ShareCommand.prototype._defaultFn = function () {
         });
         share.render();
         var popover = new Popover({
-            maxWidth: 160
+            maxWidth: 160,
+            parentEl: self._positionView.el
         });
         popover.$el.addClass('lf-share-popover');
         popover._position = Popover.POSITIONS.BOTTOM;
@@ -55,6 +56,9 @@ ShareCommand.prototype._defaultFn = function () {
 
         share.initialize();
         popover.resizeAndReposition(self._positionView.el);
+        // Position popover arrow
+        var arrowLeftOffset = self._positionView.$el.outerWidth()/2;
+        popover.$el.find('.'+Popover.CLASSES.ARROW).css('left', arrowLeftOffset+'px');
 
         //Timeout the listener attachment so that it doesn't pick-up the button click
         setTimeout($.proxy(function () {
