@@ -8,6 +8,29 @@
 
 @import (reference) "@{livefyre-bootstrap}/fycon-chars.less";
 @icon-font-path: "http://cdn.livefyre.com/libs/livefyre-bootstrap/v1.3.3/fonts/";
+@font-face {
+  font-family: "fycons";
+  src:url("@{icon-font-path}@{fycon-font-name}.eot");
+  src:url("@{icon-font-path}@{fycon-font-name}.eot?#iefix") format("embedded-opentype"),
+    url("@{icon-font-path}@{fycon-font-name}.woff") format("woff"),
+    url("@{icon-font-path}@{fycon-font-name}.ttf") format("truetype"),
+    url("@{icon-font-path}@{fycon-font-name}.svg#fycons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+[class^="fycon-"]:before, [class*=" fycon-"]:before {
+    font-family: "fycons";
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    speak: none;
+    line-height: inherit;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 
 .fycon-source-twitter {
     .fycon-source-twitter();
