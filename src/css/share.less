@@ -6,9 +6,16 @@
 @import (reference) "@{livefyre-bootstrap}/loader.less";
 @import "@{livefyre-bootstrap}/popovers.less";
 
-@import "@{livefyre-bootstrap}/fycons.less";
-@icon-font-path: "http://cdn.livefyre.com/libs/livefyre-bootstrap/v1.1.0/fonts/";
+@import (reference) "@{livefyre-bootstrap}/fycon-chars.less";
+@icon-font-path: "http://cdn.livefyre.com/libs/livefyre-bootstrap/v1.3.3/fonts/";
 
+.fycon-source-twitter {
+    .fycon-source-twitter();
+}
+
+.fycon-source-facebook {
+    .fycon-source-facebook();
+}
 
 .lf-content-share {
     .lf-btn();
