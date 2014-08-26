@@ -13,7 +13,7 @@
     "auth": "git://github.com/Livefyre/auth.git#~0.0",
     "debug": "visionmedia/debug#~0.7.4",
     "livefyre-bootstrap": "git://github.com/Livefyre/livefyre-bootstrap.git#~1.3.4",
-    "streamhub-ui": "git://github.com/Livefyre/streamhub-ui.git#~0.1.1"
+    "streamhub-ui": "git://github.com/Livefyre/streamhub-ui.git#~0.1.3"
   },
   "devDependencies": {
     "jasmine": "1.3.1",
