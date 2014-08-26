@@ -12,7 +12,7 @@ var ShareCommand = require('streamhub-share/share-command');
  */
 var ShareButton = function (opts) {
     opts = opts || {};
-    opts.className = opts.className || 'content-share fycon-action-share';
+    opts.className = opts.className || 'content-share';
     opts.label = opts.label || 'Share';
 
     var cmd = opts.command;
@@ -21,6 +21,7 @@ var ShareButton = function (opts) {
     }
 
     Button.call(this, cmd, opts);
+    this.$el.addClass('fycon-action-share');
     cmd.setPositionView(this);
 }
 inherits(ShareButton, Button);
