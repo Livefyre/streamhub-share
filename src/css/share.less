@@ -6,30 +6,38 @@
 @import (reference) "@{livefyre-bootstrap}/loader.less";
 @import "@{livefyre-bootstrap}/popovers.less";
 
-@import "@{livefyre-bootstrap}/fycons.less";
-@icon-font-path: "http://cdn.livefyre.com/libs/livefyre-bootstrap/v1.1.0/fonts/";
+@import (reference) "@{livefyre-bootstrap}/fycon-chars.less";
+@import (reference) "@{livefyre-bootstrap}/fycon-styles.less";
+@font-face {
+    .fycons-font-face(@icon-font-path: "http://cdn.livefyre.com/libs/livefyre-bootstrap/v1.3.4/fonts/");
+}
+.fycons-styles();
 
+.fycon-source-twitter {
+    .fycon-source-twitter();
+}
+
+.fycon-source-facebook {
+    .fycon-source-facebook();
+}
 
 .lf-content-share {
     .lf-btn();
     .lf-btn-link();
+    .fycon-action-share();
     display: inline-block;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    padding-left: 29px;
-    padding-right: 6px;
-    background-image: data-uri('icons/share.png');
-    background-repeat: no-repeat;
-    background-position: 7px center;
+    &:before {
+        margin-right: 5px;
+    }
     &:active {
         .box-shadow(none);
     }
     &.disabled {
         display: none;   
     }
-    &.disabled {
-        &:extend(.lf-content-share.disabled);
-    }
 }
+
 
 .lf-share-popover {
     .lf-popover();
@@ -37,7 +45,7 @@
     padding: 0;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     .lf-popover-arrow {
-        &:extend(.lf-popover  .lf-arrow);
+        &:extend(.lf-popover .lf-arrow);
         border-width: 6px;
     }
     .lf-menu-body {
@@ -49,7 +57,6 @@
     .lf-popover-content {
         padding: 0;
     }
-
 }
 
 .lf-share-popover.lf-pos-bottom .lf-popover-arrow {
@@ -58,11 +65,6 @@
     margin-left: -6px;
     top: -6px;
 }
-
-.lf-share-popover.lf-pos-bottom .lf-popover-arrow:after {
-    &:extend(.lf-popover.bottom .lf-arrow:after);
-}
-
 
 .lf-share-item() {
     height: 36px;

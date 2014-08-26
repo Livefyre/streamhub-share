@@ -21,6 +21,7 @@ var ShareButton = function (opts) {
     }
 
     Button.call(this, cmd, opts);
+    this.$el.addClass('fycon-action-share');
     cmd.setPositionView(this);
 }
 inherits(ShareButton, Button);
