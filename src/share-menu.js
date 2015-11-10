@@ -73,11 +73,6 @@ ShareMenu.prototype.handleOptionClick = function (ev) {
     window.open(baseUrl + params, 'intent', specs);
 };
 
-ShareMenu.prototype.hide = function (ev) {
-    this.detach();
-    this.destroy();
-};
-
 /** 
  * From sharer.js and previously, an annotations controller
  * @enum {string}

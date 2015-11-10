@@ -38,7 +38,6 @@
     }
 }
 
-
 .lf-share-popover {
     .lf-popover();
     .make-lf-popover-theme(#fff, #fff, #fff, #fff, #fff, #fff);
@@ -113,4 +112,78 @@
 .lf-share .lf-share-link {
     text-decoration: none;
     color: inherit;
+}
+
+@share-mobile-font-size: 20px;
+@share-mobile-item-height: 60px;
+@share-mobile-spacing: 20px;
+
+.itemDimensionsAndSpacing() {
+    .box-sizing(border-box);
+    font-size: @share-mobile-font-size;
+    height: @share-mobile-item-height;
+    line-height: @share-mobile-item-height;
+    margin-bottom: @share-mobile-spacing;
+}
+
+// Mobile
+.lf-share-popover.lf-popover-mobile {
+    background-color: rgba(0,0,0,0.7);
+    .box-shadow(none);
+    height: 100%;
+    left: 0;
+    max-width: 100%;
+    top: 0;
+    width: 100%;
+
+    .lf-popover-content {
+        background-color: #fff;
+        bottom: 0;
+        .box-sizing(border-box);
+        position: absolute;
+        width: 100%;
+
+        .lf-menu-body {
+            .box-sizing(border-box);
+            padding: @share-mobile-spacing;
+            padding-bottom: 0;
+            width: 100%;
+
+            > li {
+                .border-radius(3px);
+                .itemDimensionsAndSpacing();
+                position: relative;
+
+                &:before {
+                    border-right: 1px solid fade(#fff, 20%);
+                    left: 0;
+                    margin: 0;
+                    padding: 0 @share-mobile-spacing;
+                    position: absolute;
+                }
+            }
+            .lf-menu-foot {
+                background-color: inherit;
+                height: auto;
+                width: 100%;
+
+                input {
+                    .itemDimensionsAndSpacing();
+                    padding: 0;
+                    text-align: center;
+                    width: 100%;
+                }
+
+                .lf-share-cancel {
+                    border-top: 1px solid fade(@gray, 30%);
+                    color: @gray-light;
+                    cursor: pointer;
+                    display: block;
+                    font-weight: normal;
+                    .itemDimensionsAndSpacing();
+                    margin: 0 -@share-mobile-spacing;
+                }
+            }
+        }
+    }
 }
