@@ -8,7 +8,9 @@ var BaseMenu = require('streamhub-ui/menu');
 var inherits = require('inherits');
 var loader = require('livefyre-bootstrap/loader');
 var loaderTemplate = require('hgn!streamhub-ui/templates/loader');
+var mobileShareTemplate = require('hgn!streamhub-share/templates/mobile');
 var shareTemplate = require('hgn!streamhub-share/templates/share');
+var util = require('view/util');
 
 /**
  * Flag menu.
@@ -19,15 +21,28 @@ var shareTemplate = require('hgn!streamhub-share/templates/share');
 function ShareMenu(opts) {
     BaseMenu.call(this, opts);
 
+    /**
+     * Whether the client is mobile or not.
+     * @type {boolean}
+     */
+    this.isMobile = util.isMobile();
+
     /** @override */
     this.postEvent = 'write.post_share';
+
+    if (this.isMobile) {
+        this.elClass += ' ' + ShareMenu.CLASSES.MOBILE;
+    }
 }
 inherits(ShareMenu, BaseMenu);
 
 /** @enum {string} */
 ShareMenu.CLASSES = {
+    CANCEL: 'lf-share-cancel',
     FOOTER: 'lf-menu-foot',
     LINK: 'lf-link',
+    MOBILE: 'lf-share-mobile',
+    PERMALINK: 'lf-share-permalink',
     SHARE: 'lf-share'
 };
 
@@ -39,8 +54,11 @@ ShareMenu.prototype.elClass = [
 
 /** @override */
 ShareMenu.prototype.events = (function() {
+    var CLASSES = ShareMenu.CLASSES;
     var events = {};
-    events['click .' + ShareMenu.CLASSES.FOOTER] = '_handleTextareaClick';
+    var eventType = this.isMobile ? 'tap' : 'click';
+    events[eventType + ' .' + CLASSES.PERMALINK] = '_handleTextareaClick';
+    events[eventType + ' .' + CLASSES.CANCEL] = 'hide';
     return events;
 })();
 $.extend(ShareMenu.prototype.events, BaseMenu.prototype.events);
@@ -80,15 +98,16 @@ ShareMenu.prototype._handleTextareaClick = function (e) {
     e.preventDefault();
     e.stopPropagation();
     this.$textarea.select();
+    this.$textarea[0].setSelectionRange(0, 9999);
 };
-
 
 /**
  * Render in full.
  */
 ShareMenu.prototype._renderContent = function () {
     var frag = this._buildMenuLinks();
-    var $shareBody = $(shareTemplate({permalink: this._model.permalink}));
+    var template = this.isMobile ? mobileShareTemplate : shareTemplate;
+    var $shareBody = $(template({permalink: this._model.permalink}));
     this.$textarea = $shareBody.children().first();
     frag.appendChild($shareBody[0]);
     this.$('.' + BaseMenu.CLASSES.BODY).html('').append(frag);
@@ -116,6 +135,11 @@ ShareMenu.prototype.getTemplateContext = function () {
     var data = BaseMenu.prototype.getTemplateContext.call(this);
     data.strings.title = 'Share';
     return data;
+};
+
+ShareMenu.prototype.hide = function (ev) {
+    this.detach();
+    this.destroy();
 };
 
 /**

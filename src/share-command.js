@@ -6,6 +6,7 @@ var log = require('debug')('streamhub-share/share-command');
 var inherits = require('inherits');
 var Popover = require('streamhub-ui/popover');
 var ShareMenu = require('streamhub-share/share-menu');
+var util = require('view/util');
 
 var ShareCommand = function(opts) {
     this._opts = opts = opts || {};
@@ -49,6 +50,7 @@ ShareCommand.prototype._defaultFn = function () {
         });
         share.render();
         var popover = new Popover({
+            isMobile: util.isMobile(),
             maxWidth: 160,
             parentEl: self._positionView.el
         });
