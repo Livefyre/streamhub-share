@@ -49,10 +49,12 @@ ShareCommand.prototype._defaultFn = function () {
             model: self._content
         });
         share.render();
+
+        var isMobile = util.isMobile();
         var popover = new Popover({
-            isMobile: util.isMobile(),
-            maxWidth: 160,
-            parentEl: self._positionView.el
+            isMobile: isMobile,
+            maxWidth: isMobile ? null : 160,
+            parentEl: isMobile ? document.body : self._positionView.el
         });
         popover.$el.addClass('lf-share-popover');
         popover._position = Popover.POSITIONS.BOTTOM;
