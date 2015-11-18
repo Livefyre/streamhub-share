@@ -41,6 +41,10 @@ ShareCommand.prototype._defaultFn = function () {
         showShare();
     });
 
+    function findRoot() {
+        return $(self._positionView.el).parents('[data-lf-package]')[0];
+    }
+
     function showShare() {
         if (self._popoverActive) {
             return;
@@ -51,10 +55,24 @@ ShareCommand.prototype._defaultFn = function () {
         share.render();
 
         var isMobile = util.isMobile();
+        var rootEl = self._positionView.el;
+
+        // If mobile, find the root element to attach the modal to.
+        if (isMobile) {
+            rootEl = findRoot();
+            // If it is unable to find the root element, set isMobile to false
+            // so that it will look OK. The buttons will still work because
+            // the tap events will still be used.
+            if (!rootEl) {
+                rootEl = self._positionView.el;
+                isMobile = false;
+            }
+        }
+
         var popover = new Popover({
             isMobile: isMobile,
-            maxWidth: isMobile ? null : 160,
-            parentEl: isMobile ? document.body : self._positionView.el
+            maxWidth: 160,
+            parentEl: rootEl
         });
         popover.$el.addClass('lf-share-popover');
         popover._position = Popover.POSITIONS.BOTTOM;
