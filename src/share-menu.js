@@ -1,5 +1,6 @@
 var $ = require('jquery');
 var inherits = require('inherits');
+var isMobile = require('view/util').isMobile;
 var loader = require('livefyre-bootstrap/loader');
 var BaseShare = require('streamhub-share/base-share');
 var SocialUtil = require('streamhub-share/util/share-format');
@@ -52,25 +53,22 @@ ShareMenu.prototype._fetchPermalink = function () {
  */
 ShareMenu.prototype.handleOptionClick = function (ev) {
     var data = this.buildEventData(ev);
-
-    /** From sharer.js and previously, an annotations controller */
-    var baseUrl = SHARE_URLS[data.value];
-    var specs = [
-        'height=',
-        420,
-        ',width=',
-        550
-    ].join('');
-
-    // Support the case where this event bubbles from someone clicking share on
-    // a comment or from the selected text popover.
     var content = data.model;
-    var shareObj = SocialUtil.contentToShare(content, data.value);
+    var provider = data.value;
+
+    var shareObj = SocialUtil.contentToShare(content, provider);
     shareObj.assetServer = this.opts.assetServer;
-    shareObj.provider = data.value;
-    
+    shareObj.provider = provider;
+
+    // Handle mobile Facebook sharing a little differently. Use a different
+    // feed URL and change the display type.
+    if (isMobile() && provider === 'facebook') {
+        provider = 'facebook_mobile';
+        shareObj.displayType = 'touch';
+    }
+
     var params = SocialUtil.generateParams(shareObj);
-    window.open(baseUrl + params, 'intent', specs);
+    window.open(SHARE_URLS[provider] + params, 'intent', 'height=420,width=550');
 };
 
 /** 
@@ -79,6 +77,7 @@ ShareMenu.prototype.handleOptionClick = function (ev) {
  */
 var SHARE_URLS = {
     facebook: 'https://www.facebook.com/dialog/feed',
+    facebook_mobile: 'https://m.facebook.com/dialog/feed',
     twitter: 'https://twitter.com/intent/tweet'
 };
 

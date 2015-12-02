@@ -103,7 +103,7 @@ function generateFacebookParams(params) {
     caption = encodeURIComponent(caption.replace('{title}', document.title));
     return ['?app_id=', FACEBOOK_APP_ID,
             '&caption=', caption,
-            '&display=popup',
+            '&display=', params.displayType || 'popup',
             '&link=', encodeURIComponent(params.url),
             '&redirect_uri=', encodeURIComponent(uri)].join('');
 }
