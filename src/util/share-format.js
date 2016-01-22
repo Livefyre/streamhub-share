@@ -3,6 +3,8 @@
  * 140 character tweets.
  */
 
+var $ = require('jquery');
+
 /** @const {string} */
 var FACEBOOK_APP_ID = '595267417193679';
 var LIVEFYRE_CDN = '//cdn.livefyre.com';
@@ -17,9 +19,18 @@ var ShareFormat = {};
  * @return {string} The cleaned string.
  */
 function cleanHtml(str, useLineBreaks) {
-    return str.replace('</p><p>', !!useLineBreaks ? '\n' : ' ')
-              .replace('<p>', '')
-              .replace('</p>', '');
+    var cleaned = str.slice(0);
+    // Always want the string to be html, so do this just in case.
+    if (!cleaned.match(/^<p/)) {
+        cleaned = '<p>' + cleaned + '</p>';
+    }
+    // Converts the newlines into a separator for now so that it's not lost when
+    // the text version of the html string is retrieved.
+    cleaned = cleaned.replace('</p><p>', '||||');
+    // Get the text version of the html string.
+    cleaned = $(cleaned).text();
+    // Replace the separator with either a newline or a space.
+    return cleaned.replace('||||', !!useLineBreaks ? '\n' : ' ');
 }
 
 /**
