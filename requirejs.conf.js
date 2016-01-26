@@ -1,5 +1,6 @@
 require.config({
   paths: {
+    chai: 'lib/chai/chai',
     jquery: 'lib/jquery/jquery',
     jasmine: 'lib/jasmine/lib/jasmine-core/jasmine',
     'jasmine-html': 'lib/jasmine/lib/jasmine-core/jasmine-html',
