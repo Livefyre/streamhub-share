@@ -1,6 +1,6 @@
 {
   "name": "streamhub-share",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "main": [
     "./src/main.js"
   ],
@@ -12,7 +12,7 @@
     "view": "git://github.com/Livefyre/view.git#~1.4.1",
     "auth": "git://github.com/Livefyre/auth.git#~0.0",
     "debug": "visionmedia/debug#~0.7.4",
-    "livefyre-bootstrap": "git://github.com/Livefyre/livefyre-bootstrap.git#~1.3.4",
+    "livefyre-bootstrap": "git://github.com/Livefyre/livefyre-bootstrap.git#~1.4.15",
     "streamhub-ui": "git://github.com/Livefyre/streamhub-ui.git#~0.2.0"
   },
   "devDependencies": {
@@ -25,7 +25,7 @@
   "resolutions": {
     "auth": "~0.2.0",
     "view": "~1.4.1",
-    "livefyre-bootstrap": "~1.3.4",
+    "livefyre-bootstrap": "~1.4.15",
     "event-emitter": "~0.1.0"
   }
 }
