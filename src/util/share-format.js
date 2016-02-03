@@ -30,7 +30,8 @@ function cleanHtml(str, useLineBreaks) {
     // Get the text version of the html string.
     cleaned = $(cleaned).text();
     // Replace the separator with either a newline or a space.
-    return cleaned.replace('||||', !!useLineBreaks ? '\n' : ' ');
+    cleaned = cleaned.replace('||||', !!useLineBreaks ? '\n' : ' ');
+    return $.trim(cleaned);
 }
 
 /**
