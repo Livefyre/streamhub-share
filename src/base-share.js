@@ -99,6 +99,12 @@ ShareMenu.prototype._handleTextareaClick = function (e) {
     e.stopPropagation();
     this.$textarea.select();
     this.$textarea[0].setSelectionRange(0, 9999);
+    this.$textarea.trigger('insights:local', {
+        type: 'ShareURL',
+        content: {
+            type: 'Link'
+        }
+    });
 };
 
 /**
