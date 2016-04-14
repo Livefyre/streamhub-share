@@ -14,6 +14,7 @@ var ShareButton = function (opts) {
     opts = opts || {};
     opts.className = opts.className || 'content-share';
     opts.label = opts.label || 'Share';
+    opts.insightsVerb = opts.insightsVerb || 'ShareButtonClick';
 
     var cmd = opts.command;
     if (!cmd) {
@@ -36,6 +37,18 @@ ShareButton.prototype.template = function () {
 
 ShareButton.prototype.setContent = function (content) {
     this._command.setContent && this._command.setContent(content);
+};
+
+ShareButton.prototype._execute = function (evt) {
+    // Because the pop-over menu's get nested within the share button el,
+    // the insights:local event gets fired when the individual menu elements
+    // get clicked, too. As a result, we need to only allow the event to
+    // propogate if it is truely the element the user has clicked on.
+    var self = this;
+    this.$el.one('insights:local', function (evt) {
+        self.$el[0] !== evt.target && evt.stopPropagation();
+    });
+    Button.prototype._execute.call(this, evt);
 };
 
 module.exports = ShareButton;

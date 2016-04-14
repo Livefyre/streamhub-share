@@ -7,6 +7,12 @@ var log = require('debug')('streamhub-share/share-menu');
 
 'use strict'
 
+// CONSTANTS
+var INSIGHTS_VERBS = {
+    facebook: 'ShareFacebook',
+    twitter: 'ShareTwitter'
+};
+
 /**
  * Flag menu.
  * @constructor
@@ -46,6 +52,15 @@ ShareMenu.prototype._fetchPermalink = function () {
 };
 
 /**
+ * @extend
+ */
+ShareMenu.prototype.buildEventData = function (ev) {
+    var data = BaseShare.prototype.buildEventData.call(this, ev);
+    data.insightsVerb = INSIGHTS_VERBS[data.value];
+    return data;
+};
+
+/**
  * Handle the option click event. This should trigger a write event that will
  * flag the comment.
  * @param {jQuery.Event} ev
@@ -71,6 +86,7 @@ ShareMenu.prototype.handleOptionClick = function (ev) {
     
     var params = SocialUtil.generateParams(shareObj);
     window.open(baseUrl + params, 'intent', specs);
+    $(ev.target).trigger('insights:local', {type: data.insightsVerb});
 };
 
 /** 
@@ -81,6 +97,5 @@ var SHARE_URLS = {
     facebook: 'https://www.facebook.com/dialog/feed',
     twitter: 'https://twitter.com/intent/tweet'
 };
-
 
 module.exports = ShareMenu;
