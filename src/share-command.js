@@ -85,15 +85,26 @@ ShareCommand.prototype._defaultFn = function () {
 
         //Timeout the listener attachment so that it doesn't pick-up the button click
         setTimeout(function () {
-            $('body').one('click', $.proxy(hideShare, self));
+            document.body.addEventListener('keyup', hideShare);
+            document.body.addEventListener('click', hideShare);
         }, 100);
 
         function hideShare(ev) {
+            // ignore cleanup if not enter or space
+            if (ev.type === 'keyup' && !(ev.which === 13 || ev.which === 32)) {
+                return;
+            }
+            // enter is sometimes reaching this as a click... fixing that
+            if (ev.type === 'click' && ev.target.className === 'hub-btn hub-btn-link hub-content-share') {
+                return;
+            }
             share.detach();
             share.destroy();
             popover.destroy();
             popover = share = null;
             self._popoverActive = false;
+            document.body.removeEventListener('click', hideShare);
+            document.body.removeEventListener('keyup', hideShare);
         }
 
         self._popoverActive = true;

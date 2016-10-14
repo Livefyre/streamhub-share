@@ -127,11 +127,13 @@ ShareMenu.prototype.getLinkConfig = function () {
         {
             cls: 'fycon-source-twitter',
             key: 'twitter',
-            str: 'Twitter'
+            str: 'Twitter',
+            ariaLabel: 'Twitter share'
         }, {
             cls: 'fycon-source-facebook',
             key: 'facebook',
-            str: 'Facebook'
+            str: 'Facebook',
+            ariaLabel: 'Facebook share'
         }
     ];
 };

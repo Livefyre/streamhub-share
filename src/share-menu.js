@@ -40,7 +40,7 @@ ShareMenu.prototype._fetchPermalink = function () {
         this._renderContent();
         return;
     }
-    
+
     var self = this;
     this._model.collection.getPermalink({content: this._model}, function (err, data) {
         if (err) {
@@ -66,6 +66,10 @@ ShareMenu.prototype.buildEventData = function (ev) {
  * @param {jQuery.Event} ev
  */
 ShareMenu.prototype.handleOptionClick = function (ev) {
+    if (ev.which !== 13 && ev.which !== 32 && ev.type === 'keyup') {
+        return;
+    }
+
     var data = this.buildEventData(ev);
 
     /** From sharer.js and previously, an annotations controller */
@@ -83,13 +87,13 @@ ShareMenu.prototype.handleOptionClick = function (ev) {
     var shareObj = SocialUtil.contentToShare(content, data.value);
     shareObj.assetServer = this.opts.assetServer;
     shareObj.provider = data.value;
-    
+
     var params = SocialUtil.generateParams(shareObj);
     window.open(baseUrl + params, 'intent', specs);
     $(ev.target).trigger('insights:local', {type: data.insightsVerb});
 };
 
-/** 
+/**
  * From sharer.js and previously, an annotations controller
  * @enum {string}
  */

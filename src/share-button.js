@@ -5,7 +5,7 @@ var inherits = require('inherits');
 var ShareCommand = require('streamhub-share/share-command');
 
 /**
- * 
+ *
  * [opts] {Object=}
  * [opts.command] {Command=} Command in place of the default.
  * [opts.content] {Content=} Content to share. Can be set later.
@@ -18,7 +18,7 @@ var ShareButton = function (opts) {
 
     var cmd = opts.command;
     if (!cmd) {
-        cmd = new ShareCommand(opts); 
+        cmd = new ShareCommand(opts);
     }
 
     Button.call(this, cmd, opts);
@@ -40,6 +40,10 @@ ShareButton.prototype.setContent = function (content) {
 };
 
 ShareButton.prototype._execute = function (evt) {
+    if (evt.which !== 13 && evt.which !== 32 && evt.type === 'keyup') {
+        return;
+    }
+
     // Because the pop-over menu's get nested within the share button el,
     // the insights:local event gets fired when the individual menu elements
     // get clicked, too. As a result, we need to only allow the event to
