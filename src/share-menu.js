@@ -66,6 +66,10 @@ ShareMenu.prototype.buildEventData = function (ev) {
  * @param {jQuery.Event} ev
  */
 ShareMenu.prototype.handleOptionClick = function (ev) {
+    // prevent space from scrolling the page
+    if (ev.type === "keyup" && ev.which === 32) {
+        ev.preventDefault();
+    }
     if (ev.which !== 13 && ev.which !== 32 && ev.type === 'keyup') {
         return;
     }

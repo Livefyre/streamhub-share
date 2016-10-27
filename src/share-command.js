@@ -90,6 +90,10 @@ ShareCommand.prototype._defaultFn = function () {
         }, 100);
 
         function hideShare(ev) {
+            // prevent space from scrolling the page
+            if (ev.type === "keyup" && ev.which === 32) {
+                ev.preventDefault();
+            }
             // ignore cleanup if not enter or space
             if (ev.type === 'keyup' && !(ev.which === 13 || ev.which === 32)) {
                 return;
