@@ -1,6 +1,7 @@
 'use strict'
 
 var $ = require('jquery');
+var AriaUtil = require('streamhub-ui/util/aria');
 var Command = require('streamhub-ui/command');
 var log = require('debug')('streamhub-share/share-command');
 var inherits = require('inherits');
@@ -90,12 +91,7 @@ ShareCommand.prototype._defaultFn = function () {
         }, 100);
 
         function hideShare(ev) {
-            // prevent space from scrolling the page
-            if (ev.type === "keyup" && ev.which === 32) {
-                ev.preventDefault();
-            }
-            // ignore cleanup if not enter or space
-            if (ev.type === 'keyup' && !(ev.which === 13 || ev.which === 32)) {
+            if (AriaUtil.isNotAriaKeyEvent(ev)) {
                 return;
             }
             // enter is sometimes reaching this as a click... fixing that
