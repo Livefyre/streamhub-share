@@ -91,7 +91,7 @@ ShareCommand.prototype._defaultFn = function () {
         }, 100);
 
         function hideShare(ev) {
-            if (AriaUtil.isNotAriaKeyEvent(ev)) {
+            if (AriaUtil.isNonAriaKeyEvent(ev)) {
                 return;
             }
             // enter is sometimes reaching this as a click... fixing that

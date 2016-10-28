@@ -67,7 +67,7 @@ ShareMenu.prototype.buildEventData = function (ev) {
  * @param {jQuery.Event} ev
  */
 ShareMenu.prototype.handleOptionClick = function (ev) {
-    if (AriaUtil.isNotAriaKeyEvent(ev)) {
+    if (AriaUtil.isNonAriaKeyEvent(ev)) {
         return;
     }
 

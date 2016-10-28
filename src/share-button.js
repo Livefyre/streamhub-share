@@ -41,7 +41,7 @@ ShareButton.prototype.setContent = function (content) {
 };
 
 ShareButton.prototype._execute = function (evt) {
-    if (AriaUtil.isNotAriaKeyEvent(evt)) {
+    if (AriaUtil.isNonAriaKeyEvent(evt)) {
         return;
     }
 
