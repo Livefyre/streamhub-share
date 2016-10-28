@@ -1,5 +1,6 @@
 'use strict';
 
+var AriaUtil = require('streamhub-ui/util/aria');
 var Button = require('streamhub-ui/button');
 var inherits = require('inherits');
 var ShareCommand = require('streamhub-share/share-command');
@@ -40,11 +41,7 @@ ShareButton.prototype.setContent = function (content) {
 };
 
 ShareButton.prototype._execute = function (evt) {
-    // prevent space from scrolling the page
-    if (evt.type === "keyup" && evt.which === 32) {
-        evt.preventDefault();
-    }
-    if (evt.which !== 13 && evt.which !== 32 && evt.type === 'keyup') {
+    if (AriaUtil.isNotAriaKeyEvent(evt)) {
         return;
     }
 

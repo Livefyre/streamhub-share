@@ -1,4 +1,5 @@
 var $ = require('jquery');
+var AriaUtil = require('streamhub-ui/util/aria');
 var inherits = require('inherits');
 var loader = require('livefyre-bootstrap/loader');
 var BaseShare = require('streamhub-share/base-share');
@@ -66,11 +67,7 @@ ShareMenu.prototype.buildEventData = function (ev) {
  * @param {jQuery.Event} ev
  */
 ShareMenu.prototype.handleOptionClick = function (ev) {
-    // prevent space from scrolling the page
-    if (ev.type === "keyup" && ev.which === 32) {
-        ev.preventDefault();
-    }
-    if (ev.which !== 13 && ev.which !== 32 && ev.type === 'keyup') {
+    if (AriaUtil.isNotAriaKeyEvent(ev)) {
         return;
     }
 
