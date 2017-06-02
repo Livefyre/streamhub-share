@@ -23,7 +23,7 @@
     "livefyre-auth": "git://github.com/livefyre/livefyre-auth.git"
   },
   "resolutions": {
-    "auth": "~0.2.0",
+    "auth": "^0.4.0",
     "view": "~1.4.1",
     "livefyre-bootstrap": "~1.4.15",
     "event-emitter": "~0.1.0"
