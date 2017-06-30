@@ -5,7 +5,7 @@
   "contributors": [
     "Joao Martins <joao@livefyre.com> (http://www.joao.io)"
   ],
-  "version": "0.5.0",
+  "version": "0.5.1",
   "dependencies": {
     "bower": "*",
     "http-server": "*",

@@ -73,7 +73,7 @@ ShareCommand.prototype._defaultFn = function () {
         var popover = new Popover({
             isMobile: isMobile,
             maxWidth: 160,
-            parentEl: rootEl.parentNode
+            parentEl: isMobile ? rootEl : rootEl.parentNode
         });
         popover.$el.addClass('lf-share-popover');
         popover._position = Popover.POSITIONS.BOTTOM;
