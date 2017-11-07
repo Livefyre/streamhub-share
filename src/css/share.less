@@ -1,5 +1,6 @@
 @streamhub-ui: "lib/streamhub-ui/src/css";
 @livefyre-bootstrap: "lib/livefyre-bootstrap/src/styles";
+@bootstrap-less: "lib/bootstrap/less";
 
 @import (reference) "@{streamhub-ui}/buttons.less";
 @import (reference) "@{streamhub-ui}/mixins.less";
@@ -27,6 +28,7 @@
     .fycon-action-share();
     display: inline-block;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
     &:before {
         margin-right: 5px;
     }
@@ -44,6 +46,7 @@
     margin-left: 10px;
     padding: 0;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
     .lf-popover-arrow {
         &:extend(.lf-popover .lf-arrow);
         border-width: 6px;
@@ -67,12 +70,13 @@
 }
 
 .lf-share-item() {
-    height: 36px;
-    font-size: 14px;
     color: #fff;
-    line-height: 36px;
     cursor: pointer;
+    font-size: 14px;
+    height: 36px;
+    line-height: 36px;
     list-style: none;
+    padding: 0 10px;
 }
 
 .lf-share-item {
@@ -82,7 +86,7 @@
 .lf-share .lf-twitter {
     &:extend(.lf-share-item);
     background-color: #55acee;
-    border-radius: 3px 3px 0 0;
+    .border-radius(3px 3px 0 0);
 }
 
 .lf-share .lf-facebook {
@@ -91,22 +95,18 @@
 }
 
 .lf-share .lf-menu-foot {
-    background-color: #FFF;
     &:extend(.lf-share-item);
+    background-color: #FFF;
+    .border-radius(0 0 3px 3px);
     color: #65676E;
-    border-radius: 0 0 3px 3px;
 
     input[type=text],textarea {
-        width: ~"calc(100% - 20px)";
+        border: 1px solid #d3d3d3;
+        .border-radius(3px);
+        color: #474c52;
         font-size: 13px;
         padding: 3px;
-        border: 1px solid #d3d3d3;
-        -webkit-border-radius: 3px;
-        -moz-border-radius: 3px;
-        -ms-border-radius: 3px;
-        -o-border-radius: 3px;
-        border-radius: 3px;
-        color: #474c52;
+        width: ~"calc(100% - 6px)";
     }
 }
 
@@ -130,9 +130,11 @@
 // Mobile
 .lf-share-popover.lf-popover-mobile {
     background-color: rgba(0,0,0,0.7);
+    .border-radius(0);
     .box-shadow(none);
     height: 100%;
     left: 0;
+    margin: 0;
     max-width: 100%;
     position: fixed;
     top: 0;
@@ -154,6 +156,7 @@
             > li {
                 .border-radius(3px);
                 .itemDimensionsAndSpacing();
+                padding-left: 60px + @share-mobile-spacing;
                 position: relative;
 
                 &:before {
@@ -168,6 +171,7 @@
                 background-color: inherit;
                 height: auto;
                 margin-bottom: 30px;
+                padding: 0;
                 width: 100%;
 
                 input {
@@ -185,6 +189,7 @@
                     font-weight: normal;
                     .itemDimensionsAndSpacing();
                     margin: 0 -@share-mobile-spacing;
+                    text-align: center;
                 }
             }
         }
