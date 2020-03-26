@@ -1,6 +1,6 @@
 {
   "name": "streamhub-share",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "main": [
     "./src/main.js"
   ],
@@ -10,10 +10,10 @@
     "cajon": "git://github.com/requirejs/cajon.git#~0.1.11",
     "inherits": "git://github.com/Livefyre/inherits.git",
     "view": "git://github.com/Livefyre/view.git#~1.4.1",
-    "auth": "git://github.com/Livefyre/auth.git#~0.0",
+    "auth": "git://github.com/Livefyre/auth.git#~0.4.2",
     "debug": "visionmedia/debug#~0.7.4",
-    "livefyre-bootstrap": "git://github.com/Livefyre/livefyre-bootstrap.git#~1.4.15",
-    "streamhub-ui": "git://github.com/Livefyre/streamhub-ui.git#~0.4.3"
+    "livefyre-bootstrap": "git://github.com/Livefyre/livefyre-bootstrap.git#~1.5.7",
+    "streamhub-ui": "git://github.com/Livefyre/streamhub-ui.git#~0.4.6"
   },
   "devDependencies": {
     "chai": "1.8.1",
@@ -23,9 +23,9 @@
     "livefyre-auth": "git://github.com/livefyre/livefyre-auth.git"
   },
   "resolutions": {
-    "auth": "^0.4.0",
+    "auth": "^0.4.2",
     "view": "~1.4.1",
-    "livefyre-bootstrap": "~1.4.15",
+    "livefyre-bootstrap": "~1.5.7",
     "event-emitter": "~0.1.0"
   }
 }
